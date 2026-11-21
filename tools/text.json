@@ -1,0 +1,245 @@
+[
+ {
+  "page": 21,
+  "old": "la calore",
+  "new": "il calore",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.12,
+  "x1": 567.4
+ },
+ {
+  "page": 24,
+  "old": "duale e qualsiasi",
+  "new": "duale, e qualsiasi",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.29,
+  "x1": 567.4
+ },
+ {
+  "page": 26,
+  "old": "riguardo i fondamenti",
+  "new": "riguardo ai fondamenti",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.45,
+  "x1": 567.4
+ },
+ {
+  "page": 32,
+  "old": "una via nel mezzo",
+  "new": "una via di mezzo",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.37,
+  "x1": 567.4
+ },
+ {
+  "page": 38,
+  "old": "’, e è proprio",
+  "new": "’, ed è proprio",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.44,
+  "x1": 567.4
+ },
+ {
+  "page": 53,
+  "old": "da chi, e il modo in cui, la dice.",
+  "new": "da chi la dice e da come la dice.",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 258.8
+ },
+ {
+  "page": 57,
+  "old": "sopraccigliare",
+  "new": "sopracciliare",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 311.4
+ },
+ {
+  "page": 57,
+  "old": "disteso ringiovanito ricompattato",
+  "new": "disteso, ringiovanito, ricompattato",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 566.0
+ },
+ {
+  "page": 67,
+  "old": "to e esperienza",
+  "new": "to ed esperienza",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 387.9
+ },
+ {
+  "page": 4,
+  "old": "trattamento e esperienza",
+  "new": "trattamento ed esperienza",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 1.16,
+  "x1": 299.4
+ },
+ {
+  "page": 68,
+  "old": "Nei rituali benessere",
+  "new": "Nei rituali di benessere",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 279.8
+ },
+ {
+  "page": 68,
+  "old": " Anche il profumo",
+  "new": "Anche il profumo",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.3,
+  "x1": 567.4
+ },
+ {
+  "page": 68,
+  "old": " Coinvolge memoria",
+  "new": "Coinvolge memoria",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 542.1
+ },
+ {
+  "page": 68,
+  "old": " Ci sono giorni",
+  "new": "Ci sono giorni",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 534.2
+ },
+ {
+  "page": 70,
+  "old": "riconosce e a",
+  "new": "riconosce e",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.59,
+  "x1": 567.4
+ },
+ {
+  "page": 70,
+  "old": "cui comincia ad anticipare",
+  "new": "che comincia ad anticipare",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.18,
+  "x1": 567.4
+ },
+ {
+  "page": 77,
+  "old": "Una enorme",
+  "new": "Un’enorme",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.48,
+  "x1": 567.4
+ },
+ {
+  "page": 85,
+  "old": "di una educazione",
+  "new": "di un’educazione",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.34,
+  "x1": 567.4
+ },
+ {
+  "page": 87,
+  "old": "e emotivo.",
+  "new": "ed emotivo.",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.35,
+  "x1": 567.4
+ },
+ {
+  "page": 87,
+  "old": "di se stessi",
+  "new": "di sé stessi",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.0,
+  "x1": 567.4
+ },
+ {
+  "page": 95,
+  "old": "mi aveva convinto con",
+  "new": "mi aveva convinta con",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.0,
+  "x1": 567.4
+ },
+ {
+  "page": 95,
+  "old": "in me stesso.",
+  "new": "in me stessa.",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 460.3
+ },
+ {
+  "page": 100,
+  "old": "una donna che non conosco il",
+  "new": "una donna di cui non conosco il",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.5,
+  "x1": 567.4
+ },
+ {
+  "page": 43,
+  "old": " E poi ci sono",
+  "new": "E poi ci sono",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 283.8
+ },
+ {
+  "page": 67,
+  "old": " Un aroma",
+  "new": "Un aroma",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 555.3
+ },
+ {
+  "page": 67,
+  "old": " Ogni essenza",
+  "new": "Ogni essenza",
+  "status": "fixed",
+  "justified": false,
+  "adj_pt_per_space": 0.0,
+  "x1": 411.8
+ },
+ {
+  "page": 95,
+  "old": "calde  del",
+  "new": "calde del",
+  "status": "fixed",
+  "justified": true,
+  "adj_pt_per_space": 0.22,
+  "x1": 567.4
+ }
+]
