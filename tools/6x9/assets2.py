@@ -33,7 +33,7 @@ im=Image.open(f'{S}/nt/p1_full.png').convert('RGB')
 sc=W/im.width
 im=im.resize((W,int(im.height*sc)),Image.LANCZOS)
 need=H-im.height
-y0,y1=int(238*K*sc),int(254*K*sc)   # white band between title and ornament
+y0,y1=int(372*K*sc),int(388*K*sc)   # white band between subtitle and photo
 top=im.crop((0,0,W,y0)); band=im.crop((0,y0,W,y1)); bot=im.crop((0,y1,W,im.height))
 band=band.resize((W,band.height+need),Image.BILINEAR)
 out=Image.new('RGB',(W,H),'white'); out.paste(top,(0,0)); out.paste(band,(0,y0)); out.paste(bot,(0,y0+band.height))
