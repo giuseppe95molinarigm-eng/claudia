@@ -2,7 +2,7 @@ import pymupdf, sys
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 src, out_pdf, out_png = sys.argv[1:4]
-PAGES = 130
+PAGES = int(sys.argv[4]) if len(sys.argv) > 4 else 126
 SPINE = PAGES * 0.002252 * 72          # white paper
 TW, TH = 6 * 72, 9 * 72
 B = 9.0
