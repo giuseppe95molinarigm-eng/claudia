@@ -32,18 +32,49 @@ def wood_strip(im, k_pt, clean=None):
         st = cv2.inpaint(st, m, 9, cv2.INPAINT_TELEA)
     return Image.fromarray(st)
 
-def extend_v(im, top_pt, bottom_pt, bottom_strip_pt, clean=None):
-    """top: mirror of the top rows; bottom: seamless flip-tiling of a floor strip"""
-    t, b = px(top_pt), px(bottom_pt)
-    out = Image.new('RGB', (im.width, im.height + t + b))
-    out.paste(im, (0, t))
-    k = px(4)                                  # thin top strip (curtains/wall), no text
-    out.paste(im.crop((0, 0, im.width, k)).resize((im.width, t), Image.LANCZOS), (0, 0))
-    st = wood_strip(im, bottom_strip_pt, clean); fl = ImageOps.flip(st)
-    y, i = t + im.height, 0
-    while y < out.height:
-        out.paste(fl if i % 2 == 0 else st, (0, y)); y += st.height; i += 1
+def pingpong(band, length, first_flip=True):
+    """fill `length` px by alternately reflected copies of band (seamless continuation)"""
+    out = np.zeros((length, band.shape[1], 3), np.float32); y = 0; flip = first_flip
+    while y < length:
+        b = band[::-1] if flip else band
+        n = min(len(b), length - y); out[y:y + n] = b[:n]; y += n; flip = not flip
     return out
+
+def clean_wood_band(arr, y0, y1, xl, xr):
+    """rebuild arr[y0:y1, xl:xr] (name/ornament) from the clean wood on both sides:
+    fine texture from the sides (mirrored), lighting interpolated across"""
+    B = arr[y0:y1].copy(); h, w, _ = B.shape
+    lf = cv2.GaussianBlur(B, (0, 0), px(10)); hf = B - lf
+    left_l = lf[:, max(0, xl - px(4)):xl].mean(axis=1); right_l = lf[:, xr:xr + px(4)].mean(axis=1)
+    n = xr - xl
+    t = np.linspace(0, 1, n, dtype=np.float32)[None, :, None]
+    low = left_l[:, None, :] * (1 - t) + right_l[:, None, :] * t
+    # planks run horizontally: the grain of each row is taken from the clean sides
+    grain = np.concatenate([hf[:, :xl], hf[:, xr:]], axis=1).mean(axis=1)          # h x 3
+    C = low + grain[:, None, :]
+    fe = px(30); a = np.linspace(0, 1, fe, dtype=np.float32)[None, :, None]
+    C[:, :fe] = B[:, xl:xl + fe] * (1 - a) + C[:, :fe] * a
+    C[:, -fe:] = C[:, -fe:] * (1 - a[:, ::-1]) + B[:, xr - fe:xr] * a[:, ::-1]
+    B[:, xl:xr] = C
+    return B
+
+def extend_v(im, top_pt, bottom_pt, top_band_pt, bottom_band=None):
+    """top: ping-pong reflection of the top band (no text there);
+    bottom: ping-pong reflection of a clean bottom band (optionally rebuilt wood)"""
+    arr = np.asarray(im).astype(np.float32); h = arr.shape[0]
+    t, b = px(top_pt), px(bottom_pt)
+    out = np.zeros((h + t + b, arr.shape[1], 3), np.float32)
+    out[t:t + h] = arr
+    if t:
+        out[:t] = pingpong(arr[:px(top_band_pt)], t)[::-1]
+    if b:
+        band = bottom_band if bottom_band is not None else arr[h - px(12):]
+        f = pingpong(band, b)
+        f = cv2.GaussianBlur(f, (0, 0), sigmaX=px(5), sigmaY=px(2))
+        bl = min(px(4), b); a = np.linspace(0, 1, bl, dtype=np.float32)[:, None, None]
+        f[:bl] = f[:bl] * a + band[-1:][::-1][:1] * (1 - a)
+        out[t + h:] = f
+    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8))
 
 def place(canvas, im, x_pt, x_min, x_max, left_fill='mirror', right_fill='mirror'):
     """paste im at x_pt, clip to [x_min,x_max]; fill gaps by mirroring the edge columns"""
@@ -63,14 +94,16 @@ extra = H - ART_H
 canvas = Image.new('RGB', (px(W), px(H)), (40, 30, 19))
 # FRONT: text block (54..582pt of the panel) centred in the front live area
 fr = full.crop((round(637.5 * r), 0, round(1258.5 * r), full.height))
-top_f = 45
-fr = extend_v(fr, top_f, extra - top_f, 18, clean=(0.25, 0.75))
+top_f = extra - 42.52                        # art bottom on the board edge: bottom fill only in the wrap
+fa = np.asarray(fr).astype(np.float32)
+wood = fa[round(798 * r):]                     # clean planks below the gold ornament
+fr = extend_v(fr, top_f, extra - top_f, 17, bottom_band=wood)
 txt_c = (54.1 + 582.5) / 2 * s
 place(canvas, fr, (HINGE_R + LIVE[2]) / 2 - txt_c, FOLD_R, W)
 # BACK: frame line kept inside the board, text inside the live area
 bk = full.crop((0, 0, round(621 * r), full.height))
-top_b = 85
-bk = extend_v(bk, top_b, extra - top_b, 6)
+top_b = extra - 42.52                       # art bottom exactly on the board edge
+bk = extend_v(bk, top_b, extra - top_b, 8)
 place(canvas, bk, 30, 0, FOLD_L, left_fill='stretch')
 canvas.save(out_jpg, quality=95)
 d = pymupdf.open(); p = d.new_page(width=W, height=H)
