@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Rituali di benessere dal mondo – 6x9</title>
+<style>
+@font-face { font-family: 'Chaparral'; src: url(fonts/ChaparralPro-Regular.ttf); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Chaparral'; src: url(fonts/ChaparralPro-Italic.ttf); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'Chaparral'; src: url(fonts/ChaparralPro-Bold.ttf); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Minion'; src: url(fonts/MinionPro-Bold.ttf); font-weight: 700; font-style: normal; }
+@font-face { font-family: 'Minion'; src: url(fonts/MinionPro-BoldIt.ttf); font-weight: 700; font-style: italic; }
+@font-face { font-family: 'Minion'; src: url(fonts/MinionPro-It.ttf); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'LoraW'; src: url(fonts/lora-latin-700-normal.woff2); font-weight: 700; }
+@font-face { font-family: 'LoraW'; src: url(fonts/lora-latin-ext-700-normal.woff2); font-weight: 700; unicode-range: U+0100-024F, U+1E00-1EFF; }
+@font-face { font-family: 'CinzelW'; src: url(fonts/cinzel-latin-700-normal.woff2); font-weight: 700; }
+@font-face { font-family: 'CalibriL'; src: url(fonts/Calibri-Light-fixed.ttf); }
+
+:root {
+  --gold: #bc9b53;
+  --gold2: #bfa066;
+  --teal: #45c0b2;
+  --brown: #9e550b;
+  --cream: #fbfbf3;
+  --ink: #231f20;
+}
+
+/* Trim 6x9in = 432x648pt. KDP bleed: +9pt (0.125in) top, bottom, outside edge. Page = 441x666pt */
+@page { size: 441pt 666pt; margin: 82pt 49pt 61pt 54pt; }
+@page :right { margin-left: 54pt; margin-right: 49pt; }
+@page :left  { margin-left: 49pt; margin-right: 54pt; }
+
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Chaparral', 'Liberation Serif', 'DejaVu Serif', 'Noto Color Emoji', serif;
+  font-size: 10.6pt; line-height: 14.6pt; color: var(--ink);
+  font-kerning: normal; font-variant-ligatures: common-ligatures;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+p { margin: 0 0 6.2pt 0; text-align: justify; hyphens: manual; orphans: 2; widows: 2; }
+em { font-style: italic; }
+strong { font-weight: 700; }
+.emoji { font-family: 'Noto Color Emoji'; font-size: 0.92em; font-style: normal; }
+.sym { font-family: 'DejaVu Serif', serif; font-size: 0.9em; }
+
+h2 {
+  font-family: 'LoraW', serif; font-weight: 700; color: var(--gold2);
+  font-size: 12.6pt; line-height: 15.5pt; margin: 20pt 0 7pt 0; text-align: left;
+  break-after: avoid; page-break-after: avoid; hyphens: none;
+}
+
+/* ---------- chapter openers ---------- */
+section.chapter, section.writing { break-before: page; }
+header.opener { text-align: center; padding-top: 34pt; }
+.ch-label { font-family: 'Minion'; font-weight: 700; color: var(--teal); font-size: 18.5pt; line-height: 20pt; letter-spacing: 0.2pt; }
+h1.ch-title { font-family: 'Minion'; font-weight: 700; font-style: italic; color: var(--gold); font-size: 19.5pt; line-height: 23pt; margin: 6pt 0 0 0; text-wrap: balance; }
+.unnumbered h1.ch-title { margin-top: 0; }
+.ch-rule { border-top: 1.4pt solid var(--gold2); margin: 5pt 0 14pt 0; }
+.unnumbered header.opener { padding-top: 46pt; }
+p.ch-sub { font-style: italic; text-align: left; margin: 0 0 12pt 0; font-size: 10.2pt; hyphens: none; }
+figure { margin: 0; }
+figure.ch-photo { margin: 0 0 14pt 0; text-align: center; break-inside: avoid; }
+figure.ch-photo img { max-width: 100%; max-height: 290pt; border: 0.7pt solid var(--gold2); display: inline-block; }
+figure.photo { margin: 10pt 0 14pt 0; text-align: center; break-inside: avoid; }
+figure.photo img { max-width: 100%; max-height: 250pt; border: 0.7pt solid var(--gold2); display: inline-block; }
+
+.orn { text-align: center; margin: 12pt 0 16pt 0; break-inside: avoid; }
+.orn img { width: 57pt; mix-blend-mode: multiply; }
+
+/* ---------- part pages ---------- */
+section.part { break-before: page; break-after: page; height: 520pt; position: relative; }
+.part-inner { position: absolute; right: 2pt; top: 186pt; text-align: right; width: 260pt; }
+.part-label { font-family: 'Minion'; font-weight: 700; color: var(--gold); font-size: 27pt; line-height: 30pt; }
+.part-title { font-family: 'Minion'; font-weight: 700; font-style: italic; color: var(--brown); font-size: 27pt; line-height: 35pt; margin-top: 8pt; }
+
+/* ---------- front matter ---------- */
+section.titlepage { break-after: page; height: 10pt; }
+section.copyright { break-after: page; color: #fff; }
+.copyright .cp { padding-top: 0pt; }
+.copyright p { font-size: 9.2pt; line-height: 12.4pt; margin-bottom: 8pt; }
+
+section.toc { break-after: page; }
+h1.toc-title { font-family: 'CinzelW'; font-weight: 700; color: var(--gold); font-size: 21pt; margin: -12pt 0 0 0; line-height: 26pt; }
+.toc-rule { border-top: 1.4pt solid var(--gold2); margin: 4pt 0 10pt 0; }
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc li { font-family: 'Minion'; font-size: 8.9pt; line-height: 11pt; margin: 0; break-inside: avoid; }
+.toc a { color: var(--ink); text-decoration: none; display: flex; align-items: baseline; }
+.toc .t-txt { flex: 0 1 auto; }
+.toc a::before { content: ''; order: 2; flex: 1 1 auto; border-bottom: 0.9pt dotted #555; margin: 0 3pt; min-width: 12pt; position: relative; top: -2.5pt; }
+.toc a::after { content: target-counter(attr(href), page); order: 3; flex: 0 0 auto; min-width: 12pt; text-align: right; }
+.toc li.t-ch { font-weight: 700; margin-top: 5pt; }
+.toc li.t-sec { font-style: italic; padding-left: 11pt; text-indent: -7pt; }
+.toc li.t-sec .t-txt::before { content: '» '; font-style: normal; font-family: 'Chaparral'; }
+.toc li.t-part { background: var(--gold2); margin: 9pt 0 3pt 0; padding: 2pt 4pt; font-weight: 700; }
+.toc li.t-part a { color: #fff; }
+.toc li.t-part a::before { border-bottom-color: #fff; }
+
+/* ---------- quiz ---------- */
+p.quiz-q { font-family: 'LoraW'; font-weight: 700; font-size: 9.8pt; margin: 12pt 0 4pt 0; text-align: left; break-after: avoid; }
+p.opt { margin: 0 0 2.2pt 14pt; text-align: left; }
+
+/* ---------- tables ---------- */
+.el-cards { margin: 8pt 0 10pt 0; }
+table.el-card { width: 100%; border-collapse: collapse; margin: 0 0 9pt 0; break-inside: avoid; font-size: 8.9pt; line-height: 11.2pt; border: 0.6pt solid var(--gold2); }
+table.el-card caption { caption-side: top; background: var(--gold2); color: #fff; font-family: 'LoraW'; font-weight: 700; font-size: 10pt; text-align: left; padding: 3pt 6pt; }
+table.el-card th { width: 31%; text-align: left; vertical-align: top; font-weight: 700; color: #7a6233; padding: 2.4pt 6pt; border-top: 0.4pt solid #e6dcc4; background: #faf6ec; }
+table.el-card td { text-align: left; vertical-align: top; padding: 2.4pt 6pt; border-top: 0.4pt solid #e6dcc4; hyphens: manual; }
+table.rituals { width: 100%; border-collapse: collapse; margin: 8pt 0 12pt 0; font-size: 8.9pt; line-height: 11.2pt; background: #fcfcf8; border: 0.6pt solid var(--gold2); }
+table.rituals thead th { background: var(--gold2); color: #fff; font-weight: 700; padding: 3pt 5pt; text-align: center; }
+table.rituals tbody th { width: 30%; text-align: left; font-weight: 700; padding: 3pt 5pt; border-top: 0.5pt solid var(--gold2); vertical-align: middle; }
+table.rituals td { padding: 3pt 5pt; border-top: 0.5pt solid var(--gold2); border-left: 0.5pt solid var(--gold2); text-align: left; }
+table.rituals tr { break-inside: avoid; }
+
+/* ---------- writing page ---------- */
+section.writing { break-after: page; }
+h2.w-title { text-align: center; margin-top: 4pt; font-size: 12.5pt; }
+.wline { height: 21.5pt; border-bottom: 0.6pt solid #9a9a9a; }
+.writing .orn { margin-top: 22pt; margin-bottom: 8pt; }
+p.w-quote { text-align: center; font-style: italic; color: var(--gold2); font-size: 10.6pt; line-height: 14pt; hyphens: none; }
+
+/* ---------- contact ---------- */
+.contact { break-inside: avoid; margin-top: 26pt; text-align: center; }
+.contact p { text-align: center; }
+.contact .c1 { font-style: italic; margin-top: 6pt; }
+.contact .c2 { font-weight: 700; color: var(--gold2); font-size: 11.5pt; }
+
+/* ---------- page decorations (added by script) ---------- */
+.pagedjs_page { background: #fff; }
+.pagedjs_sheet { position: relative; }
+.deco { position: absolute; pointer-events: none; }
+.deco.full { left: 0; top: 0; width: 441pt; height: 666pt; z-index: 0; }
+.pagedjs_pagebox { position: relative; z-index: 1; }
+.deco.band { left: 0; top: 0; width: 441pt; height: 75.2pt; background-size: 441pt 75.2pt; z-index: 0; }
+.deco.obband { left: 0; top: 0; width: 441pt; height: 153.3pt; background: url(assets/opener_band.jpg) 0 0 / 441pt 153.3pt no-repeat; z-index: 0; }
+.deco.footer { top: 624pt; height: 16pt; z-index: 2; font-family: 'CalibriL', sans-serif; color: var(--ink); }
+.footer .rt { position: absolute; top: 4.5pt; font-size: 6.4pt; letter-spacing: 0.9pt; white-space: nowrap; }
+.footer .ln { position: absolute; top: 8pt; border-top: 0.45pt solid var(--gold2); }
+.footer .num { position: absolute; top: 0; width: 38pt; height: 17pt; background-size: 38pt 17pt; font-size: 7.3pt; line-height: 17pt; text-align: center; }
+</style>
+<script>
+window.PagedConfig = { auto: true, settings: { hyphenGlyph: '-' }, after: () => { window.__pagedDone = true; } };
+</script>
+<script src="pagedjs/paged.polyfill.js"></script>
+<script>
+class Deco extends Paged.Handler {
+  constructor(chunker, polisher, caller) { super(chunker, polisher, caller); }
+  afterPageLayout(pageEl, page) {
+    const sheet = pageEl.querySelector('.pagedjs_sheet');
+    const n = parseInt(pageEl.dataset.pageNumber || pageEl.getAttribute('data-page-number'));
+    const right = pageEl.classList.contains('pagedjs_right_page');
+    const trimL = right ? 0 : 9;          // x of trim left edge
+    const W = 432;
+    const has = s => pageEl.querySelector(s) !== null;
+    const add = (cls, style, html) => { const d = document.createElement('div'); d.className = 'deco ' + cls; if (style) d.setAttribute('style', style); if (html) d.innerHTML = html; sheet.prepend(d); return d; };
+    let kind = 'body';
+    if (has('section.titlepage')) kind = 'title';
+    else if (has('section.copyright')) kind = 'copyright';
+    else if (has('section.toc')) kind = 'toc';
+    else if (has('section.part')) kind = 'part';
+    else if (has('header.opener')) kind = 'opener';
+    else if (has('section.writing')) kind = 'writing';
+    pageEl.classList.add('k-' + kind);
+    const content = pageEl.querySelector('.pagedjs_page_content > div');
+    if (content) {
+      let el = content.firstElementChild;
+      while (el && (el.tagName === 'SECTION') && el.firstElementChild) el = el.firstElementChild;
+      if (el && (el.tagName === 'H2' || el.classList.contains('orn') || el.classList.contains('photo'))) el.style.marginTop = '0';
+    }
+    if (kind === 'title') add('full', 'background:url(assets/title_page.jpg) 0 0/441pt 666pt no-repeat');
+    if (kind === 'copyright') add('full', 'background:url(assets/copyright_bg.jpg) center center/auto 666pt no-repeat');
+    if (kind === 'part') add('full', 'background:#fbfbf3 url(assets/part_bg.jpg) ' + (right ? '-60pt' : '-51pt') + ' -40pt/auto 746pt no-repeat');
+    if (kind === 'toc') add('full', 'background:url(assets/toc_bg.jpg) center center/auto 666pt no-repeat');
+    if (kind === 'body' || kind === 'writing') add('band', 'background-image:url(assets/' + (right ? 'band_right' : 'band_left') + '.jpg)');
+    if (kind === 'opener') add('obband');
+    // footer
+    if (kind === 'title' || kind === 'copyright' || kind === 'part') return;
+    const f = add('footer', 'left:' + trimL + 'pt;width:' + W + 'pt');
+    const numStyle = (x, img) => 'left:' + x + 'pt;background-image:url(assets/' + img + '.png)';
+    if (kind === 'toc') {
+      f.innerHTML = '<div class="num" style="' + numStyle(W/2 - 19, 'brush_left') + '">' + n + '</div>';
+      return;
+    }
+    if (kind === 'opener') {
+      f.innerHTML = '<div class="num" style="' + numStyle(W/2 - 19, right ? 'brush_right' : 'brush_left') + '">' + n + '</div>';
+      return;
+    }
+    const rt = '<div class="rt" style="left:' + (W/2 - 70) + 'pt;width:140pt;text-align:center">RITUALI DI BENESSERE DAL MONDO</div>';
+    const ln = (a, b) => '<div class="ln" style="left:' + a + 'pt;width:' + (b - a) + 'pt"></div>';
+    if (right) {
+      f.innerHTML = ln(40, W/2 - 68) + rt + ln(W/2 + 68, W - 88) +
+        '<div class="num" style="' + numStyle(W - 40 - 38, 'brush_right') + '">' + n + '</div>';
+    } else {
+      f.innerHTML = '<div class="num" style="' + numStyle(40, 'brush_left') + '">' + n + '</div>' +
+        ln(88, W/2 - 68) + rt + ln(W/2 + 68, W - 40);
+    }
+  }
+}
+Paged.registerHandlers(Deco);
+</script>
+</head>
+<body>
+<!--FRONT-->
+<!--TOC-->
+<!--BODY-->
+</body>
+</html>
